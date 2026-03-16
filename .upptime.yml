@@ -1,0 +1,20 @@
+owner: vanderzege-alt
+repo: ivaat-uptime
+
+sites:
+  - name: n8n (gate.ivaat.com)
+    url: https://gate.ivaat.com/webhook/healthcheck
+    expectedStatusCodes:
+      - 200
+
+notifications:
+  - type: telegram
+    botToken: $TELEGRAM_BOT_TOKEN
+    chatId: $TELEGRAM_CHAT_ID
+
+assignees:
+  - vanderzege-alt
+
+skipDescriptionUpdate: false
+skipReadmeUpdate: false
+skipStatusUpdate: false
