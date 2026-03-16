@@ -1,0 +1,22 @@
+name: Uptime CI
+on:
+  push:
+    branches:
+      - master
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    name: Check Sites
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check Gate (n8n)
+        uses: upptime/uptime-monitor@v1.19.10
+        with:
+          config: ".upptime.yml"
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
